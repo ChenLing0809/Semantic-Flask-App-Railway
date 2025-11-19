@@ -19,7 +19,7 @@ def create_app():
             return jsonify({"error": "No file uploaded"}), 400
         
         file = request.files["file"]
-        file_path = os.path.join("/tmp/uploads", file.filename)
+        file_path = os.path.join("uploads", file.filename)
         file.save(file_path)
 
         try:
