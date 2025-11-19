@@ -1,0 +1,217 @@
+/* =============== Layout =============== */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 10px 30px;
+}
+
+header h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.upload button {
+  padding: 8px 16px;
+  background-color: #0aaec2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.upload button:hover {
+  background-color: #098da1;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.slider-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.level-value {
+  font-weight: 600;
+}
+
+/* =============== Canvas & Main Layout =============== */
+main.canvas {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.canvas-area {
+  flex: 1;
+  display: flex;
+  gap: 12px;
+}
+
+/* Graph wrapper (left) */
+#graphWrapper {
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 6px;
+  border-radius: 6px;
+  flex: 11;
+}
+
+/* =============== Annotation area (right) =============== */
+.annotation {
+  flex: 9;
+  width: auto;
+  min-width: 260px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+#annotationBox {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  width: 100%;
+  height: 100%;
+  transform-origin: top left;
+  position: relative;
+}
+
+#annotationViewport {
+  transform-origin: top left;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.annotation-box {
+  border: 1px solid #666;
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin: 2px;
+  font-size: 11px;
+  min-width: 40px;
+  background: #fff;
+}
+
+.annotation-box.leaf {
+  border-color: #b5b5b5;
+  background: #fffbe6;
+}
+
+.dashed {
+  border: 2px dashed #9a9a9a !important;
+  background: #fff !important;
+}
+
+.children.horizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  justify-content: center;
+}
+
+.children.vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+}
+
+.operator-title {
+  font-weight: 700;
+  font-size: 10px;
+  margin-bottom: 2px;
+}
+
+.annotation-box.highlighted {
+  background: #ffdd8a !important;
+  border-color: #e19b00 !important;
+  box-shadow: 0 0 6px rgba(255, 165, 0, 0.8);
+  transition: 0.2s;
+}
+
+/* RADIO + SEMANTIC PANEL */
+.semantic-controls {
+  width: 220px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.radio-item {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.radio-item input[type="radio"] {
+  accent-color: #0aaec2;
+}
+
+/* Vertical semantic threshold slider */
+.threshold-slider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  height: auto;
+  padding: 4px 0;
+}
+
+#semanticRange {
+  writing-mode: horizontal-tb;
+  -webkit-appearance: auto;
+  width: 160px;
+  height: 6px;
+  accent-color: #0aaec2;
+}
+
+/* ====================================================== */
+/* ===== NEW STYLES FOR TWO-BOX CONTROL PANEL TOP ====== */
+/* ====================================================== */
+
+.control-panel-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.control-box {
+  border: 1px solid #aaa;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

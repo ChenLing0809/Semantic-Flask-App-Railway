@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Navigating Process Models with Semantic Zoom</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/viz.js/2.1.2/viz.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/viz.js/2.1.2/full.render.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <head>
+        <h1>Process Model Visual Navigator</h1>
+      </head>
+
+      <!-- TOP CONTROL PANEL -->
+      <section class="controls">
+        <!-- Upload block stays on top -->
+        <div class="upload">
+          <button id="btnUpload">Data Upload & Discover</button>
+          <input id="fileInput" type="file" accept=".xes,.csv" />
+          <div id="uploadStatus">No file loaded!</div>
+        </div>
+
+        <!-- BOXED AREAS -->
+        <div class="control-panel-wrapper">
+          <!-- LEFT BOX: Hierarchy -->
+          <div class="control-box">
+            <label for="levelRange"
+              ><strong>Hierarchical abstraction level:</strong>
+            </label>
+
+            <label class="radio-item">
+              <input type="radio" name="metric" value="none" checked />
+              <span>Hierarchy only</span>
+            </label>
+
+            <div class="slider-control">
+              <input
+                id="levelRange"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0"
+              />
+              <span id="levelLabel" class="level-value">0%</span>
+            </div>
+            <div class="hint">0% = full detail, 100% = most aggregated</div>
+          </div>
+
+          <!-- RIGHT BOX: Semantic -->
+          <div class="control-box">
+            <div class="group-title">
+              <strong>Semantic Aggregation Order:</strong>
+            </div>
+
+            <label class="radio-item">
+              <input type="radio" name="metric" value="infrequent" />
+              <span>Infrequent first</span>
+            </label>
+
+            <label class="radio-item">
+              <input type="radio" name="metric" value="frequent" />
+              <span>Frequent first</span>
+            </label>
+
+            <label class="radio-item">
+              <input type="radio" name="metric" value="short_time" />
+              <span>Shorter waiting time first</span>
+            </label>
+
+            <label class="radio-item">
+              <input type="radio" name="metric" value="long_time" />
+              <span>Longer waiting time first</span>
+            </label>
+
+            <div class="threshold-slider">
+              <div class="group-title">Threshold</div>
+              <input
+                id="semanticRange"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value="0.5"
+                orient="vertical"
+              />
+              <span id="semanticLabel">50%</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CANVAS AREA -->
+      <main class="canvas">
+        <div class="canvas-area">
+          <div id="graphWrapper">
+            <svg id="petriSvg" width="1000" height="800"></svg>
+          </div>
+
+          <div id="annotationArea" class="annotation">
+            <h3>Aggregation Annotation</h3>
+            <div id="annotationBox">
+              <div id="annotationViewport"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="../static/main.js"></script>
+  </body>
+</html>
